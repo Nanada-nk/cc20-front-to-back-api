@@ -1,11 +1,12 @@
 import express from 'express'
 // Controllers
 import { createUser, listUser, readUser, updateRoleUser, deleteUser } from '../controllers/user.js'
+import { authCheck } from '../middlewares/auth.middleware.js'
 
 const router = express.Router()
 
 //ENDPOINT http://localhost:8000/api/users
-router.get('/users', listUser)
+router.get('/users',authCheck, listUser)
 //ENDPOINT http://localhost:8000/api/user
 router.get("/user", readUser)
 
